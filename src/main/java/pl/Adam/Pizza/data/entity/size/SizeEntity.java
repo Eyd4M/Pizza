@@ -1,9 +1,12 @@
 package pl.Adam.Pizza.data.entity.size;
 
+import pl.Adam.Pizza.data.entity.ordersize.OrderSizeEntity;
+import pl.Adam.Pizza.data.entity.pizza.PizzaEntity;
 import pl.Adam.Pizza.domain.model.SizeType;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Table(name = "sizes")
@@ -22,6 +25,13 @@ public class SizeEntity {
 
     @Column(name = "pizza_id")
     private Integer pizzaId;
+
+    @ManyToOne
+    @JoinColumn(name = "pizza_id", insertable = false, updatable = false)
+    private PizzaEntity pizza;
+
+    @OneToMany(mappedBy = "size")
+    private Set<OrderSizeEntity> orderSize;
 
 
 }

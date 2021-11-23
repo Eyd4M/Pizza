@@ -1,8 +1,12 @@
 package pl.Adam.Pizza.data.entity.order;
 
+import pl.Adam.Pizza.data.entity.ordersize.OrderSizeEntity;
+import pl.Adam.Pizza.data.entity.pizza.PizzaEntity;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -43,5 +47,8 @@ public class OrderEntity {
 
     @Column(name = "token")
     private String token;
+
+    @OneToMany(mappedBy = "order")
+    private Set<OrderSizeEntity> orderSize;
 
 }

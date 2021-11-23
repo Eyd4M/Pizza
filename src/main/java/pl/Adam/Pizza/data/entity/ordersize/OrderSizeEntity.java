@@ -1,5 +1,9 @@
 package pl.Adam.Pizza.data.entity.ordersize;
 
+import pl.Adam.Pizza.data.entity.order.OrderEntity;
+import pl.Adam.Pizza.data.entity.pizza.PizzaEntity;
+import pl.Adam.Pizza.data.entity.size.SizeEntity;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,5 +26,11 @@ public class OrderSizeEntity {
     @Column(name = "size_count")
     private Integer sizeCount;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id", insertable = false, updatable = false)
+    private OrderEntity order;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id", insertable = false, updatable = false)
+    private SizeEntity size;
 }
